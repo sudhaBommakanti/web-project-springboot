@@ -1,9 +1,12 @@
 package com.example.spring.articles;
 
+import com.example.spring.comments.Comment;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "articlesData")
+@Table(name = "articles")
 public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,6 +14,9 @@ public class Article {
     private String title;
     private String body;
     private String authorName;
+
+    @OneToMany
+    private List<Comment> comments;
 
     public Article(){}
 

@@ -24,6 +24,7 @@ public class ProductService {
     }
 
     public Product update(Product updatedProduct) {
+
         return repo.save(updatedProduct);
     }
 

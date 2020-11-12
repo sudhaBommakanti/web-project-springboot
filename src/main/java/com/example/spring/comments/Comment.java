@@ -1,4 +1,6 @@
-package com.example.spring.comment;
+package com.example.spring.comments;
+
+import com.example.spring.articles.Article;
 
 import javax.persistence.Entity;
 import javax.persistence.*;
@@ -7,9 +9,21 @@ import javax.persistence.*;
 @Table(name="comments")
 public class Comment {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String body;
     private String authorName;
+
+    @ManyToOne
+    private Article article;
+
+    public Article getArticle() {
+        return article;
+    }
+
+    public void setArticle(Article article) {
+        this.article = article;
+    }
 
     public String getAuthorName() {
         return authorName;
