@@ -7,7 +7,6 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
-
 @RestController
 public class ArticleController {
     private ArticleService articleService;
@@ -19,8 +18,12 @@ public class ArticleController {
     }
 
     @GetMapping("/articles")
-    public List<Article> getAll() {
-        return articleService.getAll();
+    public List<Article> getAll(@RequestParam(required = false) Long topicId) {
+        if (topicId != null) {
+            return articleService.getAllByTopicId(topicId);
+        } else {
+            return articleService.getAll();
+        }
     }
 
     @GetMapping("/articles/{id}")

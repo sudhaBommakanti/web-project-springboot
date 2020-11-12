@@ -11,6 +11,8 @@ public class ArticleService {
     @Autowired
     private ArticleRepo repo;
 
+    public ArticleService(){}
+
     public List<Article> getAll() {
         return repo.findAll();
     }
@@ -31,6 +33,7 @@ public class ArticleService {
         repo.deleteById(id);
     }
 
-    public ArticleService(){}
-
+    public List<Article> getAllByTopicId(Long topicId) {
+        return repo.findAllByTopics_Id(topicId);
+    }
 }

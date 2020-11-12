@@ -1,6 +1,7 @@
 package com.example.spring.articles;
 
 import com.example.spring.comments.Comment;
+import com.example.spring.topics.Topic;
 
 import javax.persistence.*;
 import java.util.List;
@@ -17,6 +18,9 @@ public class Article {
 
     @OneToMany
     private List<Comment> comments;
+
+    @ManyToMany(mappedBy = "articles")
+    private List<Topic> topics;
 
     public Article(){}
 
