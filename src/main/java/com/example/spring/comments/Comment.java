@@ -17,6 +17,15 @@ public class Comment {
     @ManyToOne
     private Article article;
 
+    public Comment() {}
+
+    public Comment(Long id, String body, String authorName) {
+        this.id = id;
+        this.body = body;
+        this.authorName = authorName;
+    }
+
+
     public Article getArticle() {
         return article;
     }
